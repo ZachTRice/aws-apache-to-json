@@ -9,7 +9,7 @@ provider:
   name: aws
   memorySize: 128
   region: us-east-1
-  runtime: nodejs6.10
+  runtime: nodejs8.11
   timeout: 120
 
   iamRoleStatements:

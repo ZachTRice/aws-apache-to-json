@@ -17,7 +17,8 @@
     "predeploy": "npm test",
     "deploy": "serverless deploy",
     "lint": "tslint --project \".\"",
-    "test": "mocha -r ts-node/register src/mainyarn /node/*.spec.ts"
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha -r ts-node/register src/mainyarn /node/*.spec.js"
   },
   "dependencies": {
     "device": "^0.3.9",

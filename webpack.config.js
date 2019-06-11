@@ -14,9 +14,7 @@ module.exports = {
     extensions: [
       '.js',
       '.jsx',
-      '.json',
-      '.ts',
-      '.tsx'
+      '.json'
     ]
   },
   output: {
