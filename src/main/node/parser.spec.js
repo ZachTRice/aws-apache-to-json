@@ -1,4 +1,3 @@
-
 import { Parser } from './parser';
 import { expect } from 'chai';
 import 'mocha';
@@ -6,7 +5,6 @@ import * as fs from 'fs';
 import * as os from 'os';
 
 describe('parse function', () => {
-
   it('should parse log lines correctly', () => {
     const log = fs.readFileSync('./src/main/resources/sample.log', 'utf8');
     const lines = log.split(os.EOL);
@@ -15,8 +13,8 @@ describe('parse function', () => {
     const parser = new Parser();
     const result = parser.parse(line);
 
-    //expect(result.auth).to.equal('user@domain.com');
-    //expect(result.bytes).to.equal(1632489);
+    // expect(result.auth).to.equal('user@domain.com');
+    // expect(result.bytes).to.equal(1632489);
     expect(result.clientIp).to.equal('99.9.99.99');
     expect(result.cn).to.equal('-');
     expect(result.env).to.equal('dev');
@@ -55,5 +53,4 @@ describe('parse function', () => {
 
     expect(result.clientIp).to.equal('10.0.0.1');
   });
-
 });

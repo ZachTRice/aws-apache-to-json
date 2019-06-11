@@ -1,5 +1,5 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const path = require('path');
 const slsw = require('serverless-webpack');
@@ -7,7 +7,7 @@ const slsw = require('serverless-webpack');
 module.exports = {
   entry: slsw.lib.entries,
   externals: [
-      ///aws-sdk/, // Available on AWS Lambda
+    // /aws-sdk/, // Available on AWS Lambda
   ],
   devtool: 'source-map',
   resolve: {
@@ -23,15 +23,10 @@ module.exports = {
     filename: '[name].js'
   },
   plugins: [
-      new CopyWebpackPlugin([
-                                { from: 'data', to: 'data' }
-                            ]),
-      new UglifyJsPlugin()
+    new CopyWebpackPlugin([
+      { from: 'data', to: 'data' }
+    ]),
+    new UglifyJsPlugin()
   ],
-  target: 'node',
-  module: {
-    loaders: [
-        { test: /\.ts(x?)$/, loader: 'ts-loader' }
-    ]
-  }
+  target: 'node'
 };

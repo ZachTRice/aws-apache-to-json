@@ -23,18 +23,18 @@ export const processor = (event, context, cb) => {
       return {
         recordId: input.recordId,
         result: 'Ok',
-        data: payload,
+        data: payload
       };
     } else {
       failure++;
       return {
         recordId: input.recordId,
         result: 'ProcessingFailed',
-        data: input.data,
+        data: input.data
       };
     }
   });
 
   console.log(`Processing completed.  Successful records ${success}, Failed records ${failure}.`);
-  cb(null, {records: output});
+  cb(null, { records: output });
 };

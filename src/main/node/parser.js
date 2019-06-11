@@ -1,13 +1,9 @@
+import { Record } from './record.model';
 
-import {Record} from './record.model';
-
-//const EXTENDED_COMMON_APACHE_LOG = "%{IPORHOST:clientIp} %{NOTSPACE:ident} %{NOTSPACE:auth} \\[%{HTTPDATE:timestamp}\\] \"(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpVersion})?|%{DATA:rawrequest})\" %{NUMBER:response} (?:%{NUMBER:bytes}|-) %{QUOTEDSTRING:referer} %{QUOTEDSTRING:userAgent} %{NUMBER:responseTime} %{QUOTEDSTRING:forwardedFor} (?<forwardedPort>-|%{QUOTEDSTRING}) (?<forwardedProtocol>-|%{QUOTEDSTRING}) (?<certificateSubject>-|%{QUOTEDSTRING}) (?<environment>-|%{QUOTEDSTRING}) (?<instanceId>-|%{QUOTEDSTRING})";
-const EXTENDED_COMMON_APACHE_REGEX = new RegExp('^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}) (\\S+) (\\S+) \\[([^\\]]+)\\] \\"(\\S+) (\\S+) HTTP/(.+?)\\" (\\d{1,3}) (\\d+|-) \"(.+?)\" \"(.+?)\" (\\d+|-) \"(.+?)\" \"(.+?)\" \"(.+?)\" \"(.+?|-)\" \"(.+?)\" \"(.+?)\"');
+// const EXTENDED_COMMON_APACHE_LOG = "%{IPORHOST:clientIp} %{NOTSPACE:ident} %{NOTSPACE:auth} \\[%{HTTPDATE:timestamp}\\] \"(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpVersion})?|%{DATA:rawrequest})\" %{NUMBER:response} (?:%{NUMBER:bytes}|-) %{QUOTEDSTRING:referer} %{QUOTEDSTRING:userAgent} %{NUMBER:responseTime} %{QUOTEDSTRING:forwardedFor} (?<forwardedPort>-|%{QUOTEDSTRING}) (?<forwardedProtocol>-|%{QUOTEDSTRING}) (?<certificateSubject>-|%{QUOTEDSTRING}) (?<environment>-|%{QUOTEDSTRING}) (?<instanceId>-|%{QUOTEDSTRING})";
+const EXTENDED_COMMON_APACHE_REGEX = new RegExp('^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}) (\\S+) (\\S+) \\[([^\\]]+)\\] \\"(\\S+) (\\S+) HTTP/(.+?)\\" (\\d{1,3}) (\\d+|-) "(.+?)" "(.+?)" (\\d+|-) "(.+?)" "(.+?)" "(.+?)" "(.+?|-)" "(.+?)" "(.+?)"');
 
 export class Parser {
-  constructor() {
-  }
-
   parse(input) {
     const match = EXTENDED_COMMON_APACHE_REGEX.exec(input);
     if (match != null) {
@@ -22,7 +18,6 @@ export class Parser {
         response: match[8],
         bytes: match[9],
         referer: match[10],
-        userAgent: match[11],
         responseTime: match[12],
         forwardedFor: match[13],
         forwardedPort: match[14],
@@ -39,7 +34,4 @@ export class Parser {
 
     return null;
   }
-
 }
-
-

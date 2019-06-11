@@ -1,14 +1,13 @@
 import * as fs from 'fs';
 import { expect } from 'chai';
 import 'mocha';
-import {processor} from './handler';
+import { processor } from './handler';
 
 describe('process function', () => {
-
   it('should handle a record event', () => {
     const content = fs.readFileSync('./src/main/resources/sample.json', 'utf8');
     const event = JSON.parse(content);
-    processor(event, null, (err, response) => {
+    processor(event, null, (_err, response) => {
       const records = response['records'];
       const record = records[0];
 
@@ -20,5 +19,4 @@ describe('process function', () => {
       expect(entry.city).to.equal('Danville');
     });
   });
-
 });
