@@ -5,27 +5,25 @@ These files can be sent to AWS Elasticsearch.
 
 ### Getting started
 
-Before you begin, you will need to create a resources.yml file
-at the top-level directory of this project. This is a simple YAML file that 
-includes the log groups, log streams, and S3 buckets that you want to allow the 
-deployed AWS Lambda function to access.
+Before you begin, you will need to rename the `resources.yml.sample` file at 
+the top-level directory of this project to `resources.yml`. This is a simple 
+YAML file that includes the log groups, log streams, and S3 buckets that you 
+want to allow the deployed AWS Lambda function to access.
 
-    logGroups:
-      - "*"    
-    logStreams:
-      - "*"    
-    s3Buckets:
-      - "arn:aws:s3:::some-bucket/*"
-
+### Install
 #### Dependencies
 The following dependencies will need to be installed first to build this package:
 
 - [Node.js](https://nodejs.org/en/) v8.11.0 or later
 - [Serverless Framework](https://serverless.com/framework/docs/getting-started#choose-your-compute-provider)
 
-#### Install
+After dependencies have been installed, run the following from a bash terminal:
 ```bash
 npm install  
+```
+
+### Usage
+```bash 
 sls deploy --stage=dev  
 ```
 

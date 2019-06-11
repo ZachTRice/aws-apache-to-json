@@ -1,0 +1,6 @@
+logGroups:
+  - "*"
+logStreams:
+  - "*"
+s3Buckets:
+  - "arn:aws:s3:::some-bucket/*"
