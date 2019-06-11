@@ -16,7 +16,6 @@ describe('process function', () => {
       const entry = JSON.parse(decoded);
       expect(entry.auth).to.equal('user@domain.com');
       expect(entry.bytes).to.equal(1632489);
-      expect(entry.city).to.equal('Danville');
     });
   });
 });

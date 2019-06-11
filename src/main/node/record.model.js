@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+let moment = require('moment');
 
 export class Record {
   constructor(obj) {
